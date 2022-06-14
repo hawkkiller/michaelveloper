@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
 import 'package:michaeldeveloper/src/core/router/app_router.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
@@ -23,6 +24,7 @@ class _MaterialContextState extends State<MaterialContext> {
     return ValueListenableBuilder<ThemeData>(
       valueListenable: SettingsScope.of(context).themeData,
       builder: (context, themeData, _) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         title: 'Packages',
         restorationScopeId: 'app',
         theme: themeData,
@@ -30,9 +32,8 @@ class _MaterialContextState extends State<MaterialContext> {
         routerDelegate: routerController.router.routerDelegate,
         localizationsDelegates: AppLocalization.localizationDelegates,
         supportedLocales: AppLocalization.supportedLocales,
-        locale: const Locale('en', 'US'),
+        locale: Locale(Intl.defaultLocale ?? 'en'),
       ),
     );
-    return Container();
   }
 }

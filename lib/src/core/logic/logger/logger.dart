@@ -8,4 +8,12 @@ abstract class Logger {
         error: error,
         stackTrace: stackTrace,
       );
+
+  /// just log
+  static void l(Object? object, [Object? error, StackTrace? s]) => log(
+        object.toString(),
+        error: error,
+        time: DateTime.now(),
+        stackTrace: s,
+      );
 }

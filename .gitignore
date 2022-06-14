@@ -39,7 +39,7 @@ lib/generated_plugin_registrant.dart
 
 *.g.dart
 *.freezed.dart
-
+*.gen.dart
 # Symbolication related
 app.*.symbols
 

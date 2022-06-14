@@ -67,6 +67,12 @@ mixin AppRouterController on State<AppRouter> implements IAppRouterController {
       restorationScopeId: 'go_router',
       initialLocation: const FeedRoute().location,
       routes: $appRoutes,
+      redirect: (state) {
+        if (state.location != '/') {
+          return const FeedRoute().location;
+        }
+        return null;
+      },
       errorBuilder: (context, state) =>
           NotFoundRoute(exception: state.error).build(context),
       //redirect: (state) => ,
