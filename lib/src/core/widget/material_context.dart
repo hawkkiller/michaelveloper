@@ -18,6 +18,7 @@ class MaterialContext extends StatefulWidget {
 }
 
 class _MaterialContextState extends State<MaterialContext> {
+
   @override
   Widget build(BuildContext context) {
     final routerController = AppRouter.of(context);
@@ -25,7 +26,7 @@ class _MaterialContextState extends State<MaterialContext> {
       valueListenable: SettingsScope.of(context).themeData,
       builder: (context, themeData, _) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Packages',
+        title: 'Flutter Software Engineer',
         restorationScopeId: 'app',
         theme: themeData,
         routeInformationParser: routerController.router.routeInformationParser,
