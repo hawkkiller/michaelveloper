@@ -40,6 +40,7 @@ lib/generated_plugin_registrant.dart
 *.g.dart
 *.freezed.dart
 *.gen.dart
+hosting.*
 # Symbolication related
 app.*.symbols
 
