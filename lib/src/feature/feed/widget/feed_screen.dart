@@ -4,6 +4,7 @@ import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
 import 'package:michaeldeveloper/src/feature/feed/widget/resource_item.dart';
+import 'package:michaeldeveloper/src/feature/feed/widget/resources.dart';
 
 /// {@nodoc}
 class FeedScreen extends StatefulWidget {
@@ -60,7 +61,7 @@ class _FeedScreenState extends State<FeedScreen> {
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 const SizedBox(height: 32),
-                const ResourceItem(),
+                const Resources(),
                 const Spacer(),
               ],
             ),
