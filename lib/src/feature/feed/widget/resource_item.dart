@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html' as html;
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:michaeldeveloper/src/core/assets/assets.gen.dart';
 import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
@@ -95,12 +96,12 @@ class _ResourceItemState extends State<ResourceItem>
         return SizedBox(
           height: animationSize.value,
           width: animationSize.value,
-          child: InkWell(
-            hoverColor: Colors.transparent,
+          child: GestureDetector(
             onTap: () {
               html.window.open(widget.link, '_blank');
             },
             child: MouseRegion(
+              cursor: SystemMouseCursors.click,
               onEnter: (_) async {
                 streamController.sink.add(_AnimationState.forward);
               },
