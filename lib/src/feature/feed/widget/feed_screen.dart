@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
+import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
-import 'package:michaeldeveloper/src/feature/feed/widget/resource_item.dart';
 import 'package:michaeldeveloper/src/feature/feed/widget/resources.dart';
 
 /// {@nodoc}
@@ -44,23 +43,24 @@ class _FeedScreenState extends State<FeedScreen> {
                   ),
                 ),
                 const Spacer(),
-                Text(
+                AutoSizeText(
                   AppLocalization.of(context)
                       .name
                       .split('')
                       .join(' ')
                       .toUpperCase(),
-                  style: Theme.of(context).textTheme.headline1,
+                  style: context.apprFont(context.textTheme.headline1),
+                  maxLines: 1,
                 ),
-                Text(
+                AutoSizeText(
                   AppLocalization.of(context)
                       .surname
                       .split('')
                       .join(' ')
                       .toUpperCase(),
-                  style: Theme.of(context).textTheme.headline3,
+                  style: context.apprFont(context.textTheme.headline3),
                 ),
-                const SizedBox(height: 32),
+                SizedBox(height: context.apprSize(100)),
                 const Resources(),
                 const Spacer(),
               ],

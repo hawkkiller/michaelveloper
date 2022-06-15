@@ -18,7 +18,6 @@ class MaterialContext extends StatefulWidget {
 }
 
 class _MaterialContextState extends State<MaterialContext> {
-
   @override
   Widget build(BuildContext context) {
     final routerController = AppRouter.of(context);

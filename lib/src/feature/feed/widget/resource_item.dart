@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:michaeldeveloper/src/core/assets/assets.gen.dart';
 import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
+import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 /// {@template recourse_item.dart}
@@ -80,10 +81,10 @@ class _ResourceItemState extends State<ResourceItem>
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
-    animationSize = Tween<double>(begin: 50, end: 80).animate(
+    animationSize = Tween<double>(begin: 80, end: 100).animate(
       controller,
     );
-    animationAngle = Tween<double>(begin: 0, end: -math.pi/2).animate(
+    animationAngle = Tween<double>(begin: 0, end: -math.pi / 2).animate(
       controller,
     );
   }
@@ -92,10 +93,14 @@ class _ResourceItemState extends State<ResourceItem>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animationAngle,
-      builder: (context, _) {
+      child: SvgPicture.asset(
+        widget.asset,
+        color: widget.color,
+      ),
+      builder: (context, child) {
         return SizedBox(
-          height: animationSize.value,
-          width: animationSize.value,
+          height: context.apprSize(animationSize.value),
+          width: context.apprSize(animationSize.value),
           child: GestureDetector(
             onTap: () {
               html.window.open(widget.link, '_blank');
@@ -110,10 +115,7 @@ class _ResourceItemState extends State<ResourceItem>
               },
               child: Transform.rotate(
                 angle: animationAngle.value,
-                child: SvgPicture.asset(
-                  widget.asset,
-                  color: widget.color,
-                ),
+                child: child,
               ),
             ),
           ),
