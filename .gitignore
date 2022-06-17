@@ -52,3 +52,11 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .metadata
+macos/Podfile.lock
+macos/Runner.xcodeproj/project.pbxproj
+macos/Runner.xcodeproj/project.pbxproj
+android/app/google-services.json
+ios/firebase_app_id_file.json
+macos/firebase_app_id_file.json
+macos/Runner.xcodeproj/project.pbxproj
+macos/Runner.xcworkspace/contents.xcworkspacedata

@@ -39,8 +39,8 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Assets.icons.theme.svg(
                         height: context.apprSize(60),

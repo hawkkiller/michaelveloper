@@ -6,7 +6,11 @@ extension Size<T extends Object> on BuildContext {
   double apprSize(double value) {
     final size = MediaQuery.of(this).size;
     final k = size.width / size.height;
-    return k > 1 ? value : value * k;
+    return k > 1
+        ? value
+        : k < 0.5
+            ? value * 0.5
+            : value * k;
   }
 }
 
@@ -27,7 +31,12 @@ extension Style on BuildContext {
     final size = MediaQuery.of(this).size;
     final k = size.width / size.height;
     return value.copyWith(
-      fontSize: (k > 1 ? value.fontSize! : value.fontSize! * k)*1.35,
+      fontSize: (k > 1
+              ? value.fontSize!
+              : k < 0.5
+                  ? value.fontSize! * 0.5
+                  : value.fontSize! * k) *
+          1.35,
     );
   }
 }

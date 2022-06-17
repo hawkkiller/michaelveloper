@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:html' as html;
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:michaeldeveloper/src/core/assets/assets.gen.dart';
 import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
@@ -103,7 +101,7 @@ class _ResourceItemState extends State<ResourceItem>
           width: context.apprSize(animationSize.value),
           child: GestureDetector(
             onTap: () {
-              html.window.open(widget.link, '_blank');
+              // html.window.open(widget.link, '_blank');
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
