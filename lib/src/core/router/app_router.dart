@@ -65,11 +65,11 @@ mixin AppRouterController on State<AppRouter> implements IAppRouterController {
     //final repositoryStore = RepositoryScope.of(context);
     router = GoRouter(
       restorationScopeId: 'go_router',
-      initialLocation: const FeedRoute().location,
+      initialLocation: HomeRoute().location,
       routes: $appRoutes,
       redirect: (state) {
-        if (state.location != '/') {
-          return const FeedRoute().location;
+        if (state.location == '/') {
+          return const MainRoute().location;
         }
         return null;
       },

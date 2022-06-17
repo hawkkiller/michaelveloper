@@ -57,13 +57,13 @@ class _SwitchTheme {
   }) =>
       SwitchThemeData(
         thumbColor: isDark
-            ? MaterialStateProperty.all(AppColors.lightGray)
-            : MaterialStateProperty.all(AppColors.light),
+            ? MaterialStateProperty.all(AppColors.primaryLight)
+            : MaterialStateProperty.all(AppColors.primaryDark),
         trackColor: isDark
             ? MaterialStateProperty.all(AppColors.primaryLight)
             : MaterialStateProperty.all(AppColors.primaryDark),
         overlayColor: isDark
-            ? MaterialStateProperty.all(AppColors.primaryLight.withOpacity(0.8))
-            : MaterialStateProperty.all(AppColors.primaryDark.withOpacity(0.8)),
+            ? MaterialStateProperty.all(AppColors.primaryLight.withOpacity(0.3))
+            : MaterialStateProperty.all(AppColors.primaryDark.withOpacity(0.3)),
       );
 }

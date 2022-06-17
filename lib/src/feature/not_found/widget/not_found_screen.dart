@@ -22,7 +22,7 @@ class NotFoundScreen extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: TextButton.icon(
-              onPressed: () => const FeedRoute().go(context),
+              onPressed: () => const MainRoute().go(context),
               icon: const Icon(Icons.home),
               label: const Text('Go home'),
             ),
