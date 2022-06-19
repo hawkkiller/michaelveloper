@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:michaeldeveloper/src/core/router/routes.dart';
 
 /// {@template not_found_screen.not_found_screen}
 /// NotFoundScreen widget
@@ -8,8 +7,8 @@ class NotFoundScreen extends StatelessWidget {
   /// {@macro not_found_screen.not_found_screen}
   const NotFoundScreen({
     this.exception,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Exception? exception;
 
@@ -22,7 +21,7 @@ class NotFoundScreen extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: TextButton.icon(
-              onPressed: () => const MainRoute().go(context),
+              onPressed: () => '/main',
               icon: const Icon(Icons.home),
               label: const Text('Go home'),
             ),

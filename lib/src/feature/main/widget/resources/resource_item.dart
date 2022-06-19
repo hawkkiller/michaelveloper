@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:michaeldeveloper/src/core/assets/assets.gen.dart';
 import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
+import 'package:michaeldeveloper/src/core/router/router.dart';
 import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:stream_transform/stream_transform.dart';
 
@@ -15,7 +17,7 @@ class ResourceItem extends StatefulWidget {
   const ResourceItem({
     super.key,
     required this.asset,
-    required this.link,
+    required this.type,
     this.color,
   });
 
@@ -23,20 +25,20 @@ class ResourceItem extends StatefulWidget {
   factory ResourceItem.github() => ResourceItem(
         asset: Assets.icons.github.path,
         color: AppColors.light,
-        link: 'https://github.com/hawkkiller',
+        type: 'github',
       );
 
   /// {@macro recourse_item.dart}
   factory ResourceItem.linkedIn() => ResourceItem(
         asset: Assets.icons.linkedin.path,
         color: Colors.amber,
-        link: 'https://www.linkedin.com/in/mykhailo-lazebniy/',
+        type: 'linkedin',
       );
 
   /// {@macro recourse_item.dart}
   factory ResourceItem.telegram() => ResourceItem(
         asset: Assets.icons.telegram.path,
-        link: 'https://t.me/mlazebny',
+        type: 'telegram',
       );
 
   /// the resource asset to show
@@ -46,7 +48,7 @@ class ResourceItem extends StatefulWidget {
   final Color? color;
 
   /// the resource link the user can go to
-  final String link;
+  final String type;
 
   @override
   State<ResourceItem> createState() => _ResourceItemState();
@@ -101,7 +103,9 @@ class _ResourceItemState extends State<ResourceItem>
           width: context.apprSize(animationSize.value),
           child: GestureDetector(
             onTap: () {
-              // html.window.open(widget.link, '_blank');
+              context.router.push(
+                ResourcePreviewRoute(type: widget.type),
+              );
             },
             child: MouseRegion(
               cursor: SystemMouseCursors.click,

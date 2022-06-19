@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
-import 'package:michaeldeveloper/src/core/router/app_router.dart';
+import 'package:michaeldeveloper/src/core/logic/logger/logger.dart';
+import 'package:michaeldeveloper/src/core/router/router.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
 
 /// {@template material_context.material_context}
@@ -20,7 +19,7 @@ class MaterialContext extends StatefulWidget {
 class _MaterialContextState extends State<MaterialContext> {
   @override
   Widget build(BuildContext context) {
-    final routerController = AppRouter.of(context);
+    final _router = AppRouter();
     return ValueListenableBuilder<ThemeData>(
       valueListenable: SettingsScope.of(context).themeData,
       builder: (context, themeData, _) => MaterialApp.router(
@@ -28,8 +27,11 @@ class _MaterialContextState extends State<MaterialContext> {
         title: 'Flutter Software Engineer',
         restorationScopeId: 'app',
         theme: themeData,
-        routeInformationParser: routerController.router.routeInformationParser,
-        routerDelegate: routerController.router.routerDelegate,
+        routerDelegate: _router.delegate(
+          initialDeepLink: _router.routeInfoProvider().value.location,
+        ),
+        routeInformationParser: _router.defaultRouteParser(),
+        routeInformationProvider: _router.routeInfoProvider(),
         localizationsDelegates: AppLocalization.localizationDelegates,
         supportedLocales: AppLocalization.supportedLocales,
         locale: Locale(Intl.defaultLocale ?? 'en'),

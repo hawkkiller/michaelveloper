@@ -3,33 +3,52 @@ import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 
 /// the app theme
 class AppTheme {
+  /// shared theme
+  static ThemeData _shared() {
+    return ThemeData(
+      splashColor: Colors.transparent,
+    );
+  }
+
   /// light theme
   static ThemeData light() {
-    return ThemeData(
-      visualDensity: VisualDensity.adaptivePlatformDensity,
+    return _shared().copyWith(
       scaffoldBackgroundColor: AppColors.primaryLight,
-      textTheme: _TextTheme.text(isDark: false),
-      switchTheme: _SwitchTheme.switchTheme(isDark: false),
+      hoverColor: AppColors.primaryDark,
       brightness: Brightness.light,
       primaryColor: AppColors.primaryLight,
+      textTheme: _ThemeHelper._text(isDark: false),
+      switchTheme: _ThemeHelper._switchTheme(isDark: false),
+      tabBarTheme: _ThemeHelper._tab(isDark: false),
     );
   }
 
   /// dark theme
   static ThemeData dark() {
-    return ThemeData(
+    return _shared().copyWith(
       scaffoldBackgroundColor: AppColors.primaryDark,
-      textTheme: _TextTheme.text(isDark: true),
-      switchTheme: _SwitchTheme.switchTheme(isDark: true),
-      visualDensity: VisualDensity.adaptivePlatformDensity,
+      hoverColor: AppColors.primaryLight,
       brightness: Brightness.dark,
       primaryColor: AppColors.primaryDark,
+      textTheme: _ThemeHelper._text(isDark: true),
+      switchTheme: _ThemeHelper._switchTheme(isDark: true),
+      tabBarTheme: _ThemeHelper._tab(isDark: true),
     );
   }
 }
 
-class _TextTheme {
-  static TextTheme text({required bool isDark}) => TextTheme(
+class _ThemeHelper {
+  static TabBarTheme _tab({required bool isDark}) => const TabBarTheme(
+        labelColor: Colors.amber,
+        indicator: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: AppColors.light,
+            ),
+          ),
+        ),
+      );
+  static TextTheme _text({required bool isDark}) => TextTheme(
         headline1: TextStyle(
           fontFamily: 'Nexa',
           fontSize: 50,
@@ -49,10 +68,7 @@ class _TextTheme {
           color: isDark ? AppColors.lightGray : AppColors.light,
         ),
       );
-}
-
-class _SwitchTheme {
-  static SwitchThemeData switchTheme({
+  static SwitchThemeData _switchTheme({
     required bool isDark,
   }) =>
       SwitchThemeData(

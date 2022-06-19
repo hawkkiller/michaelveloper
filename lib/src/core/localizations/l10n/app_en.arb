@@ -1,4 +1,8 @@
 {
   "name": "Mykhailo",
-  "surname": "Lazebniy"
+  "surname": "Lazebnyi",
+  "main": "Main",
+  "aboutMe": "About Me",
+  "myProjects": "My Projects",
+  "contact": "Contact Me"
 }

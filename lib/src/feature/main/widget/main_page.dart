@@ -5,18 +5,18 @@ import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
 import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
-import 'package:michaeldeveloper/src/feature/main/widget/resources.dart';
+import 'package:michaeldeveloper/src/feature/main/widget/resources/resources.dart';
 
 /// {@nodoc}
-class MainScreen extends StatefulWidget {
+class MainPage extends StatefulWidget {
   /// {@nodoc}
-  const MainScreen({super.key});
+  const MainPage({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();

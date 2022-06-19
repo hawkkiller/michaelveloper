@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
-import 'package:michaeldeveloper/src/feature/main/widget/resource_item.dart';
+import 'package:michaeldeveloper/src/feature/main/widget/resources/resource_item.dart';
 
 /// {@template resources}
 /// All resources that the author has,

@@ -10,6 +10,7 @@ analyzer:
     - 'lib/**.gen.dart'
     - 'lib/**.g.dart'
     - 'lib/**.freezed.dart'
+    - 'lib/**.gr.dart'
     # Build
     - 'build/**'
     # Tests

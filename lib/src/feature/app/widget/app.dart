@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:michaeldeveloper/src/core/router/app_router.dart';
 import 'package:michaeldeveloper/src/core/widget/material_context.dart';
 import 'package:michaeldeveloper/src/core/widget/settings_scope.dart';
 import 'package:michaeldeveloper/src/feature/initialization/model/repository_store.dart';
@@ -20,12 +19,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppRouter(
-      child: RepositoryScope(
-        repositoryStore: repositoryStore,
-        child: const SettingsScope(
-          child: MaterialContext(),
-        ),
+    return RepositoryScope(
+      repositoryStore: repositoryStore,
+      child: const SettingsScope(
+        child: MaterialContext(),
       ),
     );
   }
