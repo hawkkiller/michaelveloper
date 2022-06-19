@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 import 'package:michaeldeveloper/src/core/localizations/localizations.dart';
 import 'package:michaeldeveloper/src/core/router/router.dart';
+import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 
 /// {@template home_screen}
 /// HomeScreen widget
@@ -37,8 +39,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       isScrollable: true,
                       controller: controller,
                       tabs: [
-                        Tab(text: AppLocalization.of(context).main),
-                        Tab(text: AppLocalization.of(context).aboutMe),
+                        Tab(
+                          child: Text(
+                            AppLocalization.of(context).main,
+                            style: context.textTheme.headline3?.copyWith(
+                              color: AppColors.amber,
+                            ),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            AppLocalization.of(context).aboutMe,
+                            style: context.textTheme.headline3?.copyWith(
+                              color: AppColors.amber,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
