@@ -39,21 +39,12 @@ class _MainPageState extends State<MainPage> {
               children: [
                 Align(
                   alignment: Alignment.centerRight,
-                  child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Assets.icons.theme.svg(
-                        height: context.apprSize(60),
-                        color: AppColors.light,
-                      ),
-                      Switch(
-                        value: SettingsScope.of(
-                          context,
-                          listen: true,
-                        ).isDarkTheme,
-                        onChanged: _switchTheme,
-                      ),
-                    ],
+                  child: Switch(
+                    value: SettingsScope.of(
+                      context,
+                      listen: true,
+                    ).isDarkTheme,
+                    onChanged: _switchTheme,
                   ),
                 ),
                 const Spacer(),
@@ -63,7 +54,7 @@ class _MainPageState extends State<MainPage> {
                       .split('')
                       .join(' ')
                       .toUpperCase(),
-                  style: context.apprFont(context.textTheme.headline1),
+                  style: context.textTheme.headline1,
                   maxLines: 1,
                 ),
                 AutoSizeText(
@@ -72,10 +63,10 @@ class _MainPageState extends State<MainPage> {
                       .split('')
                       .join(' ')
                       .toUpperCase(),
-                  style: context.apprFont(context.textTheme.headline3),
+                  style: context.textTheme.headline3,
                 ),
-                SizedBox(
-                  height: context.apprSize(100),
+                const SizedBox(
+                  height: 100,
                 ),
                 const Resources(),
                 const Spacer(),

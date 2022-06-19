@@ -28,12 +28,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             return Scaffold(
               body: Column(
                 children: [
-                  TabBar(
-                    controller: controller,
-                    tabs: [
-                      Tab(text: AppLocalization.of(context).main),
-                      Tab(text: AppLocalization.of(context).aboutMe),
-                    ],
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TabBar(
+                      overlayColor: MaterialStateProperty.all(
+                        Colors.transparent,
+                      ),
+                      isScrollable: true,
+                      controller: controller,
+                      tabs: [
+                        Tab(text: AppLocalization.of(context).main),
+                        Tab(text: AppLocalization.of(context).aboutMe),
+                      ],
+                    ),
                   ),
                   Expanded(
                     child: child,

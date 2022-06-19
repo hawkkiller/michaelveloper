@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:michaeldeveloper/src/feature/main/widget/resources/resource_item.dart';
 
 /// {@template resources}
@@ -13,7 +12,7 @@ class Resources extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: context.apprSize(50),
+      spacing: 20,
       children: <ResourceItem>[
         ResourceItem.github(),
         ResourceItem.linkedIn(),

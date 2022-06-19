@@ -51,7 +51,7 @@ class _ThemeHelper {
   static TextTheme _text({required bool isDark}) => TextTheme(
         headline1: TextStyle(
           fontFamily: 'Nexa',
-          fontSize: 50,
+          fontSize: 40,
           fontWeight: FontWeight.w700,
           color: isDark ? AppColors.lightGray : AppColors.light,
         ),

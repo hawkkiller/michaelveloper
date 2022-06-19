@@ -81,7 +81,7 @@ class _ResourceItemState extends State<ResourceItem>
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
-    animationSize = Tween<double>(begin: 80, end: 100).animate(
+    animationSize = Tween<double>(begin: 50, end: 60).animate(
       controller,
     );
     animationAngle = Tween<double>(begin: 0, end: -math.pi / 2).animate(
@@ -99,8 +99,8 @@ class _ResourceItemState extends State<ResourceItem>
       ),
       builder: (context, child) {
         return SizedBox(
-          height: context.apprSize(animationSize.value),
-          width: context.apprSize(animationSize.value),
+          height: animationSize.value,
+          width: animationSize.value,
           child: GestureDetector(
             onTap: () {
               context.router.push(
