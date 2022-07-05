@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: Text(
                             AppLocalization.of(context).main,
                             style: context.textTheme.headline3?.copyWith(
-                              color: AppColors.amber,
+                              color: context.colors.amber,
                             ),
                           ),
                         ),
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           child: Text(
                             AppLocalization.of(context).aboutMe,
                             style: context.textTheme.headline3?.copyWith(
-                              color: AppColors.amber,
+                              color: context.colors.amber,
                             ),
                           ),
                         ),

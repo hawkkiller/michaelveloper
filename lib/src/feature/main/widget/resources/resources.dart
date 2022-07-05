@@ -14,8 +14,8 @@ class Resources extends StatelessWidget {
     return Wrap(
       spacing: 20,
       children: <ResourceItem>[
-        ResourceItem.github(),
-        ResourceItem.linkedIn(),
+        ResourceItem.github(context),
+        ResourceItem.linkedIn(context),
         ResourceItem.telegram(),
       ],
     );

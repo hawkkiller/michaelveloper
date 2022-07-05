@@ -25,7 +25,7 @@ class LinkedinResourceScreen extends StatelessWidget {
               child: Assets.icons.linkedin.svg(
                 height: 100,
                 width: 100,
-                color: AppColors.amber,
+                color: context.colors.amber,
               ),
             ),
           ),

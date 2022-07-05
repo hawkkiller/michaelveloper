@@ -33,7 +33,8 @@ class InitializationController with ChangeNotifier {
     var initializationProgress = _initializationProgress;
     final stopwatch = Stopwatch()..start();
     try {
-      for (final step in _initializationSteps.entries) {
+      await for (final step
+          in Stream.fromIterable(_initializationSteps.entries)) {
         currentStep++;
         initializationProgress
           ..progress = (currentStep * 100 ~/ totalSteps).clamp(0, 100)

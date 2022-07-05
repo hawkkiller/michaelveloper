@@ -22,16 +22,16 @@ class ResourceItem extends StatefulWidget {
   });
 
   /// {@macro recourse_item.dart}
-  factory ResourceItem.github() => ResourceItem(
+  factory ResourceItem.github(BuildContext context) => ResourceItem(
         asset: Assets.icons.github.path,
-        color: AppColors.light,
+        color: context.colors.light,
         type: 'github',
       );
 
   /// {@macro recourse_item.dart}
-  factory ResourceItem.linkedIn() => ResourceItem(
+  factory ResourceItem.linkedIn(BuildContext context) => ResourceItem(
         asset: Assets.icons.linkedin.path,
-        color: Colors.amber,
+        color: context.colors.amber,
         type: 'linkedin',
       );
 

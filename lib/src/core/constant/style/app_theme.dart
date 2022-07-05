@@ -12,74 +12,134 @@ class AppTheme {
 
   /// light theme
   static ThemeData light() {
+    final colors = AppColorsLight();
     return _shared().copyWith(
-      scaffoldBackgroundColor: AppColors.primaryLight,
-      hoverColor: AppColors.primaryDark,
+      extensions: <ThemeExtension>[
+        AppColorsExtension(
+          primary: colors.primary,
+          secondary: colors.secondary,
+          light: colors.light,
+          amber: colors.amber,
+        ),
+      ],
+      scaffoldBackgroundColor: colors.primary,
+      hoverColor: colors.secondary,
       brightness: Brightness.light,
-      primaryColor: AppColors.primaryLight,
-      textTheme: _ThemeHelper._text(isDark: false),
-      switchTheme: _ThemeHelper._switchTheme(isDark: false),
-      tabBarTheme: _ThemeHelper._tab(isDark: false),
+      primaryColor: colors.primary,
+      textTheme: _ThemeHelper._text(colors: colors),
+      switchTheme: _ThemeHelper._switchTheme(colors: colors),
+      tabBarTheme: _ThemeHelper._tab(colors: colors),
     );
   }
 
   /// dark theme
   static ThemeData dark() {
+    final colors = AppColorsDark();
     return _shared().copyWith(
-      scaffoldBackgroundColor: AppColors.primaryDark,
-      hoverColor: AppColors.primaryLight,
+      extensions: <ThemeExtension>[
+        AppColorsExtension(
+          primary: colors.primary,
+          secondary: colors.secondary,
+          light: colors.light,
+          amber: colors.amber,
+        ),
+      ],
+      scaffoldBackgroundColor: colors.primary,
+      hoverColor: colors.secondary,
       brightness: Brightness.dark,
-      primaryColor: AppColors.primaryDark,
-      textTheme: _ThemeHelper._text(isDark: true),
-      switchTheme: _ThemeHelper._switchTheme(isDark: true),
-      tabBarTheme: _ThemeHelper._tab(isDark: true),
+      primaryColor: colors.primary,
+      textTheme: _ThemeHelper._text(colors: colors),
+      switchTheme: _ThemeHelper._switchTheme(colors: colors),
+      tabBarTheme: _ThemeHelper._tab(colors: colors),
     );
   }
 }
 
 class _ThemeHelper {
-  static TabBarTheme _tab({required bool isDark}) => const TabBarTheme(
+  static TabBarTheme _tab({required AppColors colors}) => TabBarTheme(
         labelColor: Colors.amber,
         indicator: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: AppColors.light,
+              color: colors.light,
             ),
           ),
         ),
       );
-  static TextTheme _text({required bool isDark}) => TextTheme(
+  static TextTheme _text({required AppColors colors}) => TextTheme(
         headline1: TextStyle(
           fontFamily: 'Nexa',
           fontSize: 40,
           fontWeight: FontWeight.w700,
-          color: isDark ? AppColors.lightGray : AppColors.light,
+          color: colors.light,
         ),
         headline2: TextStyle(
           fontFamily: 'Nexa',
           fontSize: 30,
           fontWeight: FontWeight.w700,
-          color: isDark ? AppColors.lightGray : AppColors.light,
+          color: colors.light,
         ),
         headline3: TextStyle(
           fontFamily: 'Nexa',
           fontSize: 20,
           fontWeight: FontWeight.w700,
-          color: isDark ? AppColors.lightGray : AppColors.light,
+          color: colors.light,
         ),
       );
   static SwitchThemeData _switchTheme({
-    required bool isDark,
+    required AppColors colors,
   }) =>
       SwitchThemeData(
-        thumbColor: isDark
-            ? MaterialStateProperty.all(AppColors.primaryLight)
-            : MaterialStateProperty.all(AppColors.primaryDark),
-        trackColor: isDark
-            ? MaterialStateProperty.all(AppColors.primaryLight)
-            : MaterialStateProperty.all(AppColors.primaryDark),
-        overlayColor: isDark
-            ? MaterialStateProperty.all(AppColors.primaryLight.withOpacity(0.3))
-            : MaterialStateProperty.all(AppColors.primaryDark.withOpacity(0.3)),
+        thumbColor: MaterialStateProperty.all(colors.secondary),
+        trackColor: MaterialStateProperty.all(colors.secondary),
+        overlayColor: MaterialStateProperty.all(
+          colors.secondary.withOpacity(0.3),
+        ),
       );
+}
+
+/// {@template colors.extension}
+/// colors extension
+/// {@endtemplate}
+class AppColorsExtension extends ThemeExtension<AppColorsExtension> {
+  /// {@macro colors.extension}
+  AppColorsExtension({
+    required this.primary,
+    required this.secondary,
+    required this.light,
+    required this.amber,
+  });
+  @override
+  AppColorsExtension copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? light,
+    Color? amber,
+  }) {
+    return AppColorsExtension(
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      light: light ?? this.light,
+      amber: amber ?? this.amber,
+    );
+  }
+
+  @override
+  AppColorsExtension lerp(
+    ThemeExtension<ThemeExtension>? other,
+    double t,
+  ) {
+    if (other is! AppColorsExtension) return this;
+    return AppColorsExtension(
+      primary: Color.lerp(primary, other.primary, t)!,
+      secondary: Color.lerp(secondary, other.secondary, t)!,
+      light: Color.lerp(light, other.light, t)!,
+      amber: Color.lerp(amber, other.amber, t)!,
+    );
+  }
+
+  final Color primary;
+  final Color secondary;
+  final Color light;
+  final Color amber;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:michaeldeveloper/src/core/constant/style/app_theme.dart';
 
 /// Just helpful shortcuts
 extension HelpfulShortcuts on BuildContext {
@@ -7,4 +8,7 @@ extension HelpfulShortcuts on BuildContext {
 
   /// get textheme from the current context
   TextTheme get textTheme => theme.textTheme;
+
+  /// get color extension
+  AppColorsExtension get colors => theme.extension<AppColorsExtension>()!;
 }

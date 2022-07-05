@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:michaeldeveloper/src/core/assets/assets.gen.dart';
 import 'package:michaeldeveloper/src/core/constant/misc/links.dart';
-import 'package:michaeldeveloper/src/core/constant/style/colors.dart';
 import 'package:michaeldeveloper/src/core/utils/extensions/extensions.dart';
 import 'package:michaeldeveloper/src/feature/main/widget/resources/return.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,7 +30,7 @@ class _GithubResourceScreenState extends State<GithubResourceScreen> {
               child: Assets.icons.github.svg(
                 height: 100,
                 width: 100,
-                color: AppColors.light,
+                color: context.colors.light,
               ),
             ),
           ),
